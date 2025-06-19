@@ -14,6 +14,19 @@ const transporter = nodemailer.createTransport({
     pass: 'lyub feih novv hdst',
   },
 });
+export async function onRequestPost(context) {
+  const formData = await context.request.formData();
+  const name = formData.get('name');
+  const email = formData.get('email');
+  const message = formData.get('message');
+
+  // Do something — e.g., email, log, push to webhook
+  console.log({ name, email, message });
+
+  return new Response("Thank you! We'll be in touch.", {
+    headers: { "Content-Type": "text/plain" },
+  });
+}
 
 const server = http.createServer((req, res) => {
   if (req.method === 'GET') {
@@ -31,6 +44,7 @@ const server = http.createServer((req, res) => {
         res.end('File Not Found');
         return;
       }
+  
 
       // Set MIME types for common static files
       const ext = path.extname(filePath).toLowerCase();
