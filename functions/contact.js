@@ -1,9 +1,9 @@
-require('dotenv').config();
+
 const http = require('http');
 const fs = require('fs');
 
 const nodemailer = require('nodemailer');
-const querystring = require('querystring');
+
 
 const PORT = 3000;
 
