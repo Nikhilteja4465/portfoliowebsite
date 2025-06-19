@@ -1,6 +1,5 @@
 
 const http = require('http');
-const fs = require('fs');
 
 const nodemailer = require('nodemailer');
 
@@ -38,12 +37,7 @@ const server = http.createServer((req, res) => {
     }
 
     // Serve static files
-    fs.readFile(filePath, (err, data) => {
-      if (err) {
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('File Not Found');
-        return;
-      }
+  }
   
 
       // Set MIME types for common static files
